@@ -284,3 +284,5 @@ dist
 
 # Misc files
 *.zip
+cache
+volume/
