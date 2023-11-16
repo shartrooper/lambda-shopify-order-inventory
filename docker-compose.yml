@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+  localstack:
+    image: localstack/localstack
+    environment:
+      - SERVICES=lambda
+      - DEBUG=1
+      - DATA_DIR=/tmp/localstack/data
+    ports:
+      - "127.0.0.1:4566:4566"            # LocalStack Gateway
+      - "127.0.0.1:4510:4510"  # external services port range
+    volumes:
+      - "${LOCALSTACK_VOLUME_DIR:-./volume}:/var/lib/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
