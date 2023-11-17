@@ -1,14 +1,23 @@
-exports.handler = async (event: any) => {
-	const body = JSON.parse(event.body);
-	
-	console.log('BODY ITEMS!');
-	console.log(event.body);
-	console.log('PARSED BODY ITEMS!');
-	console.log(JSON.stringify(body.line_items));
+import logger from "./logger";
+import { LineItems } from "./types";
+
+exports.handler = async (event: { body?: string }) => {
+
+	if (!event.body) {
+		throw logger.error('Request does not have expected body\'s payload !');
+	}
+
+	const { line_items: lineItems } = JSON.parse(event.body) as LineItems;
+
+	logger.info('PARSED BODY ITEMS!');
+
+	for (const lineItem of lineItems) {
+		logger.info(`Sold ${lineItem.quantity} ${lineItem.name} item${lineItem.quantity > 1 && 's'}`);
+	}
 
 	const response = {
 		statusCode: 200,
-		body,
+		items: lineItems,
 	};
 
 	return response;
