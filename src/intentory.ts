@@ -37,8 +37,8 @@ class Inventory {
 
 		for (const payloadItem of validatedPayloadItems) {
 			const found = this.items.find(item => item.product_id === payloadItem.product_id);
+			
 			if (found) {
-				
 				const updatedItem = this.update(payloadItem, found);
 				this.items = [...this.items.filter(item => item.product_id !== found.product_id), updatedItem];
 				logger.setLogMessage('updated', `ITEM: ${updatedItem.name} PRICE:${updatedItem.price} ${CURRENCY_CODE} INVENTORY LEVEL: ${updatedItem.inventory_level} `)
