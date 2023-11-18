@@ -2,7 +2,7 @@
 ### Lambda function for storing shopify placed orders
 
 ## Features
-- Triggered when an order is placed in your Shopify store.
+- Triggered when an order is placed in your Shopify store. Can quickly try it out with a [test notification](https://github.com/shartrooper/lambda-shopify-order-inventory/blob/master/example/testing-notification.jpg).
 - Keeps an in-memory inventory level of all the sold items from the order placed.
 - Attempts 3 retries before giving up to the event handling.
 - Logs are registered in the LocalStack docker container.
