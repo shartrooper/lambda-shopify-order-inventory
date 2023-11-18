@@ -3,8 +3,10 @@ interface LogCollection {
   updated: string[]
 }
 
+const INIT = { created: [], updated: [] };
+
 class Logger {
-  private logCollection: LogCollection = { created: [], updated: [] }
+  private logCollection: LogCollection = INIT;
 
   info(message: string) {
     console.log(message);
@@ -38,6 +40,11 @@ class Logger {
     this.logCollection.updated.forEach(log => {
       console.log(log);
     });
+  }
+
+  clear() {
+    this.logCollection.created = [];
+    this.logCollection.updated = [];
   }
 }
 

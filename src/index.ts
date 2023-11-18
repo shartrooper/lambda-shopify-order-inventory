@@ -21,11 +21,14 @@ exports.handler = async (event: { body?: string }) => {
 	logger.getCreatedStatusLogs();
 
 	logger.getUpdatedStatusLogs();
-
+	
+	logger.clear();
+	
 	const response = {
 		statusCode: 200,
 		items: inventory.get(),
 	};
 
+	
 	return response;
 };

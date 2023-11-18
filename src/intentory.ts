@@ -37,18 +37,15 @@ class Inventory {
 
 		for (const payloadItem of validatedPayloadItems) {
 			const found = this.items.find(item => item.product_id === payloadItem.product_id);
-			
 			if (found) {
 				const updatedItem = this.update(payloadItem, found);
 				this.items = [...this.items.filter(item => item.product_id !== found.product_id), updatedItem];
-				logger.setLogMessage('updated', `ITEM: ${updatedItem.name} PRICE:${updatedItem.price} ${CURRENCY_CODE} INVENTORY LEVEL: ${updatedItem.inventory_level} `)
-				continue;
+				logger.setLogMessage('updated', `ITEM: ${updatedItem.name}, PRICE:${updatedItem.price} ${CURRENCY_CODE}, INVENTORY LEVEL: ${updatedItem.inventory_level} `);
+			} else {
+				const createdItem = this.create(payloadItem);
+				logger.setLogMessage('created', `ITEM: ${createdItem.name}, PRICE:${createdItem.price} ${CURRENCY_CODE}, INVENTORY LEVEL: ${createdItem.inventory_level} `);
+				this.items = [...this.items, createdItem];
 			}
-
-			const createdItem = this.create(payloadItem)
-			logger.setLogMessage('created', `ITEM: ${createdItem.name} PRICE:${createdItem.price} ${CURRENCY_CODE} INVENTORY LEVEL: ${createdItem.inventory_level} `)
-
-			this.items = [...this.items, createdItem];
 		}
 
 		this.items.sort((a, b) => a.id > b.id ? 1 : -1);
