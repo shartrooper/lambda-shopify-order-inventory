@@ -72,7 +72,7 @@ awslocal lambda create-function   --function-name shopify-lambda   --runtime nod
 And finally, its URL function used to be invoked:
 
 ```
-awslocal lambda get-function-url-config --function-name lambda-shopify
+awslocal lambda get-function-url-config --function-name shopify-lambda
 ```
 The output will be similar to the following line:
 ``
@@ -86,6 +86,9 @@ Type this line in order to delete the created function.
 ````
 awslocal lambda delete-function --function-name lambda-shopify
 ````
+
+For more commands, check [Lambda CLI documentation](https://docs.aws.amazon.com/cli/latest/reference/lambda/) 
+
 ## How to create a webhook in shopify with a Proxy URL
 - Add your lambda function URL to the stack of mapped URLs to host name in `/etc/hosts` without the port.
 ``ex. 127.0.0.1 	   xxxxxxx.lambda-url.us-east-1.localhost.localstack.cloud``
