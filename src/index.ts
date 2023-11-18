@@ -9,12 +9,6 @@ exports.handler = async (event: { body?: string }) => {
 
 	const { line_items: lineItems } = JSON.parse(event.body) as LineItems;
 
-	logger.info('PARSED BODY ITEMS!');
-
-	for (const lineItem of lineItems) {
-		logger.info(`Sold ${lineItem.quantity} ${lineItem.name} item${lineItem.quantity > 1 && 's'}`);
-	}
-
 	const response = {
 		statusCode: 200,
 		items: lineItems,
