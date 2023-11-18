@@ -3,7 +3,10 @@
 
 ## Features
 - Triggered when an order is placed in your Shopify store.
-- Keeps an in memory inventory level of all the sold items from the order placed.
+- Keeps an in-memory inventory level of all the sold items from the order placed.
+- Attempts 3 retries before giving up to the event handling.
+- Logs are registered in the LocalStack docker container.
+- Test locally with typescript mocha chai.
 
 ## Requirements
 
