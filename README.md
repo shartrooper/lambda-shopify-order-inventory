@@ -85,7 +85,9 @@ The output will be similar to the following line:
    ....
 }
 ``
-Type this line in order to delete the created function.
+
+Type this line in order to delete the created function if required to create another build.
+
 ````
 awslocal lambda delete-function --function-name lambda-shopify
 ````
