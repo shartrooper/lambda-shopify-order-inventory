@@ -62,7 +62,7 @@ npm run build
 Create a zipfile either manually or running zip con sonsole. 
 For windows, you can install [7zip](https://www.7-zip.org/download.html) and add it as a environment variable.
 ```
-7z a fn.zip ./dist/src/fn.js
+7z a fn.zip ./dist/src/*
 ```
 For Linux, you can also install 7zip or add file with zip
 ```
